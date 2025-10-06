@@ -3,19 +3,20 @@ import subprocess
 import time
 import pygame
 import PIL
+import os
 
 
 def run_splash_screen():
     # runs splash-screen.py script
-    subprocess.run(["python", "c:\\Users\\bcrbl\\Comp-Sci code\\python\\AGC\\splash-screen.py"], check=True)
+    subprocess.run(["python", os.path.join(os.path.dirname(__file__), "splash-screen.py")], check=True) # now can be ran on any pc
 
 def mainmenu():
     # runs mainmenu.py script
-    subprocess.run(["python", "c:\\Users\\bcrbl\\Comp-Sci code\\python\\AGC\\mainmenu.py"], check=True)
+    subprocess.run(["python", os.path.join(os.path.dirname(__file__), "mainmenu.py")], check=True)
     
 def run_game():
-    subprocess.run(["python", "c:\\Users\\bcrbl\\Comp-Sci code\\python\\AGC\\game.py"], check=True)
-    
+    subprocess.run(["python", os.path.join(os.path.dirname(__file__), "game.py")], check=True)
+
 
 def main():
     run_splash_screen()
