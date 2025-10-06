@@ -2,12 +2,13 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import time
 import pygame
+import os
 
 fade_in_animation = 1300   # in milliseconds
 fade_out_animation = 3500  
 display_length = 1300   
-splash_screen_location = r"C:/Users/bcrbl/Comp-Sci code/python/AGC/assets/splash.png"  # leave so you can refine later 
-splash_music_location = r"C:/Users/bcrbl/Comp-Sci code/python/AGC/assets/splashmusic.wav"
+splash_screen_location = os.path.join(os.path.dirname(__file__), "assets", "splash.png")
+splash_music_location = os.path.join(os.path.dirname(__file__), "assets", "splashmusic.wav")
 
 
 pygame.mixer.init()
@@ -58,6 +59,5 @@ def splash():
     root.mainloop()
 
 splash()
-
 
 
