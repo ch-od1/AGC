@@ -2,9 +2,8 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import smtplib, ssl
 import subprocess as sp
-
-
-
+import os
+# notes - remember to call subprocesses as sp in this file!!
 
 root = tk.Tk()
 root.title("Login Screen")
@@ -28,29 +27,25 @@ password_label.grid(row=1, column=0, padx=5, pady=5, sticky="e")
 password_entry = tk.Entry(form_frame, font=("Arial", 14), show="*")
 password_entry.grid(row=1, column=1, padx=5, pady=5)
 
-def get_username():
-    return username_entry.get()
+
+def return_to_main_menu():
+    root.destroy()
+    sp.run(["python", os.path.join(os.path.dirname(__file__), "mainmenu.py")], check=True)
+
+return_button = tk.Button(root, text="Return to Main Menu", font=("Arial", 14), command=return_to_main_menu)
+return_button.pack(pady=10)
 
 
-def get_password():
-    return password_entry.get()
 
+root.update_idletasks()
+window_width = root.winfo_width()
+window_height = root.winfo_height()
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+x = (screen_width // 2) - (window_width // 2)
+y = (screen_height // 2) - (window_height // 2)
+root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
-def login():
-    username = username_entry.get()
-    password = password_entry.get()
-    validator()
-    
-    
-def validator():
-    # Placeholder for actual validation logic
-    # Here you would typically check the username and password against a database or file
-    if username_entry.get() == "user" and password_entry.get() == "pass":
-        tk.messagebox.showinfo("Login Successful", "Welcome back!")
-        root.destroy()
-        sp.run(["python", "c:\\Users\\bcrbl\\Comp-Sci code\\python\\AGC\\game.py"], check=True)
-    else:
-        tk.messagebox.showerror("Login Failed", "Invalid username or password.")
 
 
 

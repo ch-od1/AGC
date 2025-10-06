@@ -8,7 +8,7 @@ def main_menu():
     def on_create_account():
         messagebox.showinfo("AGC Main Menu", "Account creation selected.")
         root.destroy()
-        subprocess.run(["python", os.path.join(os.path.dirname(__file__), "account_creation.py")], check=True)
+        subprocess.run(["python", os.path.join(os.path.dirname(__file__), "account-creation.py")], check=True)
         
 
     def on_login():
